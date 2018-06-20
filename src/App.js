@@ -1,30 +1,46 @@
 import React, { Component } from 'react'
 import './css/App.css'
 import './css/flag-css.min.css'
-import kristine from './avatars/kristine.png'
-import tej from './avatars/tej.png'
-import nicky from './avatars/nicky.png'
-import mark from './avatars/mark.png'
-import mike from './avatars/mike.png'
-import denis from './avatars/denis.png'
-import rob from './avatars/rob.png'
-import carl from './avatars/carl.png'
+import alex from './avatars/alex.png'
+import harriet from './avatars/harriet.png'
+import james from './avatars/james.png'
+import juliet from './avatars/juliet.png'
+import andrei from './avatars/andrei.png'
 import richard from './avatars/richard.png'
-import david from './avatars/david.png'
-import ian from './avatars/ian.png'
+import anne from './avatars/anne.png'
+import rob from './avatars/rob.png'
+import anoop from './avatars/anoop.png'
+import russell from './avatars/russell.png'
+import don from './avatars/don.png'
+import vijay from './avatars/vijay.png'
+import fraser from './avatars/fraser.png'
+import ed from './avatars/ed.png'
+import orlando from './avatars/orlando.png'
+import philip from './avatars/philip.png'
+import raj from './avatars/raj.png'
+import imogen from './avatars/imogen.png'
+
+
 
 const avatars = {
-  kristine: kristine,
-  tej: tej,
-  nicky: nicky,
-  mark: mark,
-  mike: mike,
-  denis: denis,
-  rob: rob,
-  carl: carl,
-  richard: richard,
-  david: david,
-  ian: ian
+  alex,
+  harriet,
+  james,
+  juliet,
+  andrei,
+  richard,
+  anne,
+  rob,
+  anoop,
+  russell,
+  don,
+  vijay,
+  fraser,
+  ed,
+  orlando,
+  philip,
+  raj,
+  imogen,
 }
 
 class App extends Component {
@@ -37,18 +53,42 @@ class App extends Component {
       futureMatchesData: []
     }
 
+    // this.internal = {
+    //   kristine: ['BRA', 'DEN', 'SRB'],
+    //   tej: ['ARG', 'ENG', 'POL'],
+    //   nicky: ['GER', 'KSA', 'KOR'],
+    //   mark: ['AUS', 'ISL', 'JPN'],
+    //   mike: ['ESP', 'SWE', 'BEL'],
+    //   denis: ['EGY', 'POR', 'TUN'],
+    //   rob: ['CRO', 'RUS', 'PER'],
+    //   carl: ['CRC', 'FRA', 'MAR'],
+    //   richard: ['PAN', 'SEN', 'URU'],
+    //   david: ['SUI', 'MEX', 'COL'],
+    //   ian: ['IRN', 'NGA']
+    // }
     this.internal = {
-      kristine: ['BRA', 'DEN', 'SRB'],
-      tej: ['ARG', 'ENG', 'POL'],
-      nicky: ['GER', 'KSA', 'KOR'],
-      mark: ['AUS', 'ISL', 'JPN'],
-      mike: ['ESP', 'SWE', 'BEL'],
-      denis: ['EGY', 'POR', 'TUN'],
-      rob: ['CRO', 'RUS', 'PER'],
-      carl: ['CRC', 'FRA', 'MAR'],
-      richard: ['PAN', 'SEN', 'URU'],
-      david: ['SUI', 'MEX', 'COL'],
-      ian: ['IRN', 'NGA']
+      anne: ['RUS'],
+      philip: ['KSA', 'BEL'],
+      juliet: ['EGY', 'CRC', 'SUI', 'MEX'],
+      chris: ['URU'],
+      imogen: ['POR'],
+      russell: ['ESP'],
+      vijay: ['MAR'],
+      orlando: ['IRN'],
+      harriet: ['DEN'],
+      jack: ['FRA', 'JPN'],
+      fraser: ['PER', 'NGA'],
+      alex: ['AUS'],
+      don: ['ARG', 'CRO'],
+      james: ['ISL', 'COL'],
+      ed: ['SRB'],
+      matt: ['BRA'],
+      rob: ['GER'],
+      raj: ['SWE'],
+      richard: ['KOR', 'ENG'],
+      anoop: ['PAN', 'SEN'],
+      andrei: ['TUN'],
+      louis: ['POL'],
     }
   }
 
@@ -122,13 +162,19 @@ class App extends Component {
         staffName = name
       }
     })
-    return <img src={avatar} alt={staffName} className='staff' />
+
+    return avatar 
+      ? <img src={avatar} alt={staffName} className='staff' /> 
+      : <div className='staff'><h4 style={{ color: '#b8222f' }}>{staffName ? staffName.toUpperCase() : ""}</h4></div>
   }
 
   displayMatch (match, index, noScore = false) {
     return (
       <div key={index} className="aMatch">
-        <div className="score">
+        <div className="score" style={ { 
+            
+            width: '90%', 
+            margin: 'auto' }}>
           <div>{this.staff(match.home_team.code)}<span className={`flag flag-2x flag-fifa-${match.home_team.code.toLowerCase()}`}></span>{match.home_team.country}</div>
           {noScore && <div>&nbsp;</div>}
           {!noScore && <div>{match.home_team.goals}-{match.away_team.goals}</div>}
@@ -145,7 +191,7 @@ class App extends Component {
     console.log("future", this.state.futureMatchesData);
     return (
       <div className="App">
-        <h1>FIFA World Cup 2018 live scores</h1>
+        <h1>FIFA World Cup 2018 live scores </h1>
         {this.state.futureMatchesData.length > 0 && <h2>Next match</h2>}
         {this.state.futureMatchesData.length > 0 && this.displayMatch(this.state.futureMatchesData[this.state.futureMatchesData.length-1], 0, true)}
         {this.state.currentMatchesData.length > 0 && <h2>Matches in progress</h2>}
