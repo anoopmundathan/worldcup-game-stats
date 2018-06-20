@@ -1,0 +1,8 @@
+{
+  "short_name": "World Cup live scores",
+  "name": "FIFA World Cup 2018 live scores",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#3ce881",
+  "background_color": "#ffffff"
+}
